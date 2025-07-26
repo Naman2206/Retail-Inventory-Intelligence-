@@ -41,21 +41,79 @@ In this simplified example, `data/raw_data` acts as the "Staging Area" and `data
 
 
 
-'''
-+----------------+       +----------------+       +----------------+       +----------------+
-| Data Sources   | ----> | Staging Area   | ----> | Data Lake      | ----> | Data Warehouse |
-| (Simulated     |       | (Raw, Temporary|       | (Curated,       |
-| CSV Files)     |       | Storage)       |       | Structured)    |       | Optimized)     |
-+----------------+       +----------------+       +----------------+       +----------------+
-                                 |                        |                        |
-                                 | (ETL Processes)        | (ETL Processes)        | (BI Tools, ML)
-                                 V                        V                        V
-                          +----------------+       +----------------+       +----------------+
-                          | Orchestration  |       | Data Quality   |       | Reporting/ML   |
-                          | (Airflow, DBT) |       | & Governance   |       | Applications   |
-                          +----------------+       +----------------+       +----------------+
+# Data Architecture Flow
 
-'''
+```
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│  Data Sources   │────▶│  Staging Area   │────▶│   Data Lake     │────▶│ Data Warehouse  │
+│   (Simulated    │     │ (Raw, Temporary │     │   (Curated,     │     │   (Optimized)   │
+│   CSV Files)    │     │    Storage)     │     │   Structured)   │     │                 │
+└─────────────────┘     └─────────────────┘     └─────────────────┘     └─────────────────┘
+          │                       │                       │                       │
+          │                       │                       │                       │
+          ▼                       ▼                       ▼                       ▼
+   (ETL Processes)         (ETL Processes)         (BI Tools, ML)
+          │                       │                       │
+          ▼                       ▼                       ▼
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│  Orchestration  │     │  Data Quality   │     │  Reporting/ML   │
+│ (Airflow, DBT)  │     │ & Governance    │     │  Applications   │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+```
+
+## Architecture Components
+
+### 1. **Data Sources**
+- Simulated CSV files
+- External APIs
+- Database systems
+- Real-time streams
+
+### 2. **Staging Area**
+- Raw, temporary storage
+- Landing zone for incoming data
+- Minimal processing
+- Short retention period
+
+### 3. **Data Lake**
+- Curated, structured data
+- Long-term storage
+- Multiple data formats
+- Partitioned by date/source
+
+### 4. **Data Warehouse**
+- Optimized for analytics
+- Dimensional modeling
+- Aggregated data
+- High-performance queries
+
+### 5. **Supporting Components**
+
+#### **Orchestration (Airflow, DBT)**
+- Workflow management
+- Dependency handling
+- Scheduling and monitoring
+- Error handling and retries
+
+#### **Data Quality & Governance**
+- Data validation rules
+- Lineage tracking
+- Schema enforcement
+- Compliance monitoring
+
+#### **Reporting/ML Applications**
+- Business intelligence tools
+- Machine learning models
+- Real-time dashboards
+- Analytics applications
+
+## Data Flow Process
+
+1. **Ingestion**: Raw data lands in staging area
+2. **Processing**: ETL processes clean and transform data
+3. **Storage**: Processed data stored in data lake
+4. **Optimization**: Data further refined for data warehouse
+5. **Consumption**: End users access via BI tools and ML applications
 
 ---
 
