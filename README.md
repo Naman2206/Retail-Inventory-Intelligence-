@@ -43,6 +43,7 @@ In this simplified example, `data/raw_data` acts as the "Staging Area" and `data
 
 ## Project Structure
 
+
 The repository is organized to facilitate development, testing, and deployment:
 
 data-engineering-project/
