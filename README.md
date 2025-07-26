@@ -41,52 +41,51 @@ In this simplified example, `data/raw_data` acts as the "Staging Area" and `data
 
 ---
 
-## Project Structure
-
+# Project Structure
 
 The repository is organized to facilitate development, testing, and deployment:
+
+```
 data-engineering-project/
 ├── .github/ # GitHub specific configurations (e.g., workflows, issue templates)
-│ └── workflows/
-│ └── ci-cd.yml # CI/CD pipelines for testing, deployment
+│   └── workflows/
+│       └── ci-cd.yml # CI/CD pipelines for testing, deployment
 ├── docs/ # Project documentation, architecture diagrams, data models
-│ ├── architecture.md
-│ ├── data_model.md
-│ └── README.md # Detailed project README
+│   ├── architecture.md
+│   ├── data_model.md
+│   └── README.md # Detailed project README
 ├── data/ # Directory for sample data or local data storage
-│ ├── raw_data/ # Simulated raw input data (for local testing)
-│ │ ├── 2025-07-23/
-│ │ └── ...
-│ └── curated_data/ # Simulated output data (for local testing)
-│ ├── year=2025/
-│ │ ├── month=07/
-│ │ │ └── day=23/
-│ │ │ └── transactions_curated_2025-07-23.parquet
-│ └── ...
+│   ├── raw_data/ # Simulated raw input data (for local testing)
+│   │   └── 2025-07-23/
+│   │       └── ...
+│   └── curated_data/ # Simulated output data (for local testing)
+│       └── year=2025/
+│           └── month=07/
+│               └── day=23/
+│                   ├── transactions_curated_2025-07-23.parquet
+│                   └── ...
 ├── scripts/ # Python scripts for various tasks
-│ ├── etl_pipeline.py # Main ETL script
-│ ├── data_generator.py # Script to generate sample raw data (can be integrated into etl_pipeline.py for this example)
-│ └── utils.py # Utility functions (e.g., logging, common transformations)
+│   ├── etl_pipeline.py # Main ETL script
+│   ├── data_generator.py # Script to generate sample raw data (can be integrated into etl_pipeline.py for this example)
+│   └── utils.py # Utility functions (e.g., logging, common transformations)
 ├── dags/ # (If using Airflow) Apache Airflow DAGs
-│ └── transaction_etl_dag.py
+│   └── transaction_etl_dag.py
 ├── sql/ # SQL scripts for DDL, DML, or data warehouse transformations
-│ ├── ddl/
-│ │ └── create_tables.sql
-│ └── transformations/
-│ └── aggregate_sales.sql
-├── tests/ # Unit and integration tests for code and data quality
-│ ├── unit/
-│ │ └── test_etl_logic.py
-│ └── integration/
-│ └── test_data_quality.py
+│   └── create_tables.sql
+├── transformations/ # dbt aggregate, sales.sql, tests/ # Unit and integration tests for code and data quality
+│   └── unit/
+│       ├── test_etl_logic.py
+│       └── integration/
+│           └── test_data_quality.py
 ├── notebooks/ # Jupyter notebooks for data exploration, ad-hoc analysis, PoCs
-│ └── data_exploration.ipynb
+│   └── data_exploration.ipynb
 ├── config/ # Configuration files (e.g., database credentials, API keys - use environment variables in production!)
-│ └── settings.ini
-├── .gitignore # Files and directories to ignore in Git
+│   ├── settings.ini
+│   └── .gitignore # Files and directories to ignore in Git
 ├── README.md # Main project README (this file)
 ├── requirements.txt # Python dependencies
 └── setup.py # (Optional) For packaging your Python code
+```
 
 Copy
 Edit
