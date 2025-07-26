@@ -39,6 +39,24 @@ The conceptual architecture for this data pipeline involves stages from raw data
 
 In this simplified example, `data/raw_data` acts as the "Staging Area" and `data/curated_data` represents the "Data Warehouse" or structured layer of a "Data Lake".
 
+
+
+'''
++----------------+       +----------------+       +----------------+       +----------------+
+| Data Sources   | ----> | Staging Area   | ----> | Data Lake      | ----> | Data Warehouse |
+| (Simulated     |       | (Raw, Temporary|       | (Curated,       |
+| CSV Files)     |       | Storage)       |       | Structured)    |       | Optimized)     |
++----------------+       +----------------+       +----------------+       +----------------+
+                                 |                        |                        |
+                                 | (ETL Processes)        | (ETL Processes)        | (BI Tools, ML)
+                                 V                        V                        V
+                          +----------------+       +----------------+       +----------------+
+                          | Orchestration  |       | Data Quality   |       | Reporting/ML   |
+                          | (Airflow, DBT) |       | & Governance   |       | Applications   |
+                          +----------------+       +----------------+       +----------------+
+
+'''
+
 ---
 
 # Project Structure
