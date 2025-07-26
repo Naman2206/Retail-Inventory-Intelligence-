@@ -186,4 +186,97 @@ To set up and run this project locally, follow these steps:
    git clone https://github.com/your-username/data-engineering-project.git
    cd data-engineering-project
 
+Create a virtual environment (recommended):
 
+bash
+Copy
+Edit
+python -m venv venv
+source venv/bin/activate  # On Windows: `venv\Scripts\activate`
+Install dependencies:
+
+bash
+Copy
+Edit
+pip install pandas pyarrow
+(pyarrow is needed for Parquet file handling).
+
+Usage
+The etl_pipeline.py script simulates raw data generation, performs the ETL process, and stores the curated data.
+
+Run the ETL pipeline:
+
+bash
+Copy
+Edit
+python scripts/etl_pipeline.py
+This script will:
+
+Create data/raw_data and data/curated_data directories.
+
+Generate sample daily CSV files in data/raw_data.
+
+Process these raw files, apply transformations, and save the curated data as Parquet files in data/curated_data with a year=/month=/day= partitioning scheme.
+
+Print messages to the console indicating the progress and output locations.
+
+Verify the output:
+
+Inspect the generated files in the data/curated_data directory.
+
+The script also includes a small verification step at the end to read a sample curated file.
+
+Future Enhancements
+Cloud Integration: Migrate data storage to cloud services (e.g., AWS S3, Azure Data Lake Storage, Google Cloud Storage).
+
+Distributed Processing: Implement ETL logic using Apache Spark (PySpark) for handling truly massive datasets.
+
+Orchestration: Integrate with Apache Airflow or another workflow management tool to schedule and monitor the ETL jobs.
+
+Data Quality Checks: Add more robust data validation and quality checks (e.g., using Great Expectations).
+
+Monitoring & Alerting: Set up logging and alerting for pipeline failures or data anomalies.
+
+Streaming Data: Adapt the pipeline to process real-time data streams (e.g., using Kafka/Kinesis and Spark Streaming/Flink).
+
+Database Integration: Load curated data into a data warehouse (e.g., Snowflake, BigQuery, Redshift) instead of local Parquet files.
+
+CI/CD: Implement Continuous Integration/Continuous Deployment pipelines using GitHub Actions or similar tools.
+
+Contributing
+Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
+
+Fork the repository.
+
+Create a new branch:
+
+bash
+Copy
+Edit
+git checkout -b feature/your-feature-name
+Make your changes.
+
+Commit your changes:
+
+bash
+Copy
+Edit
+git commit -m 'Add new feature'
+Push to the branch:
+
+bash
+Copy
+Edit
+git push origin feature/your-feature-name
+Open a Pull Request.
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+yaml
+Copy
+Edit
+
+---
+
+🔥 Do you also want me to **add the full ETL Python scripts (`etl_pipeline.py`, `data_generator.py
